@@ -22,12 +22,14 @@ class Program
                 switch (choice)
                 {
                     case "1":
+                        Console.WriteLine("What is your name?:");
+                        string fullName = Console.ReadLine();
                         Console.WriteLine("Writing a new entry:");
                         string prompt = PromptGenerator.GetRandomPrompt();
                         Console.WriteLine("Prompt: " + prompt);
                         Console.Write("Response: ");
                         string response = Console.ReadLine();
-                        journal.AddEntry(new Entry(DateTime.Now, prompt, response));
+                        journal.AddEntry(new Entry(fullName, DateTime.Now, prompt, response));
                         break;
                     case "2":
                         Console.WriteLine("Displaying the journal:");

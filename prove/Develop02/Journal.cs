@@ -17,7 +17,7 @@ namespace Journal
         {
             foreach (var entry in _entries)
             {
-                Console.WriteLine(entry.Date.ToString() + " " + entry.Prompt + " " + entry.Response);
+                Console.WriteLine(entry.FullName + ", " + entry.Date.ToString() + ", " + entry.Prompt + ", " + entry.Response);
             }
         }
 
@@ -27,10 +27,11 @@ namespace Journal
             {
                 foreach (var entry in _entries)
                 {
-                    writer.WriteLine($"{entry.Date},{entry.Prompt},{entry.Response}");
+                    writer.WriteLine($"{entry.FullName},{entry.Date},{entry.Prompt},{entry.Response}");
                 }
             }
         }
+
         public void LoadFromFile(string filename)
         {
             _entries.Clear();
@@ -39,14 +40,15 @@ namespace Journal
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] parts = line.Split(',');
-                    if (parts.Length == 3 && DateTime.TryParse(parts[0], out DateTime date))
+                    string[] parts = line.Split(',');   
+                    if (parts.Length == 4 && DateTime.TryParse(parts[1], out DateTime date))
                     {
-                        _entries.Add(new Entry(date, parts[1], parts[2]));
+                        _entries.Add(new Entry(parts[0], date, parts[2], parts[3]));
                     }
                 }
             }
         }
+
     
     }  
 }
