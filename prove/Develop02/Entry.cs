@@ -12,8 +12,7 @@ namespace Journal
 
         public Entry(string fullName, DateTime date, string prompt, string response)
         {
-            FullName = fullName;
-            Date = date;
+            FullName = fullName;            Date = date;
             Prompt = prompt;
             Response = response;
         }
