@@ -13,7 +13,8 @@ namespace Mindfulness
                 Console.WriteLine("1. Breathing Activity");
                 Console.WriteLine("2. Reflection Activity");
                 Console.WriteLine("3. Listing Activity");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Relaxing Activity");
+                Console.WriteLine("5. Exit");
 
                 Console.Write("Choose an activity: ");
                 int choice = int.Parse(Console.ReadLine());
@@ -32,8 +33,11 @@ namespace Mindfulness
                         activity = new ListingActivity();
                         break;
                     case 4:
+                        activity = new RelaxingActivity();
+                        break;
+                    case 5:
                         Console.WriteLine("Goodbye!");
-                        return;
+                        return;    
                     default:
                         Console.WriteLine("Invalid choice. Please choose again.");
                         continue;

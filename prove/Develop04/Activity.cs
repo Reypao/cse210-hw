@@ -24,34 +24,38 @@ namespace Mindfulness
             Console.WriteLine("Activity is completed");
         }
 
-        public void ShowSpinner(int duration)
+       public void ShowSpinner(int duration)
         {
+            Console.Write("\b \b"); // Erase the - character
+            Console.Write("C"); // Initial Pac-Man
 
-            Console.Write("\b \b"); // Erase the - character         
-            Console.Write("+");
-            Thread.Sleep(500);
-
-            for (int i = 0; i < duration; i += 2)
+            for (int i = 0; i < duration + 20; i += 2)
             {
-                Console.Write("\b \b"); // Erase the + character
-                Console.Write("-"); // Replace it with the - character
-                Thread.Sleep(500);
+                Console.Write("\b \b"); // Erase the character
 
-                Console.Write("\b \b"); // Erase the + character
-                Console.Write("\\"); // Replace it with the - character
-                Thread.Sleep(500);
+                // Cycle through Pac-Man mouth positions
+                switch (i % 4)
+                {
+                    case 0:
+                        Console.Write("<Effrey>");
+                        break;
+                    case 2:
+                        Console.Write("<<");
+                        break;
+                    case 4:
+                        Console.Write(">>");
+                        break;
+                    case 8:
+                        Console.Write("Effrey");
+                        break;
+                }
 
-                Console.Write("\b \b"); // Erase the + character
-                Console.Write("|"); // Replace it with the - character
                 Thread.Sleep(500);
-
-                Console.Write("\b \b"); // Erase the + character
-                Console.Write("/"); // Replace it with the - character
-                Thread.Sleep(500);
-
             }
-            Console.Write("\b \b"); // Erase the + character
+
+            Console.Write("\b \b"); // Erase the last character
         }
+
 
         public void ShowCountdown(int seconds)
         {
