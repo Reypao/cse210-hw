@@ -1,5 +1,5 @@
 using System;
-
+using System.IO;
 
 namespace EternalQuest
 {
@@ -12,6 +12,10 @@ namespace EternalQuest
         {
         }
 
+        public SimpleGoal() : base(){}
+
+        public SimpleGoal(StreamReader read) : base(read){}
+
         public override void RecordEvent()
         {
             _isComplete = true;
@@ -21,6 +25,25 @@ namespace EternalQuest
         public override string GetStringRepresentation()
         {
             return $"{base.GetStringRepresentation()} - Completed: {_isComplete}";
+        }
+
+        protected override string GetFriendlyCompleteActionDescription()
+        {
+            return "completion";
+        }
+
+        protected override string GetFriendlyGoalTypeName()
+        {
+            return "one-time goal";
+        }
+
+        public override void Complete()
+        {
+            if (!_isCompleted)
+            {
+                _isCompleted = true;
+                _pointsEarned += _points;
+            }
         }
     }
 }

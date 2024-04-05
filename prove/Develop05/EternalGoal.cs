@@ -1,5 +1,5 @@
 using System;
-
+using System.IO;
 
 namespace EternalQuest
 {
@@ -10,6 +10,10 @@ namespace EternalQuest
         {
         }
 
+        public EternalGoal(){}
+
+        public EternalGoal(StreamReader reader) { }
+
         public override void RecordEvent()
         {
             Console.WriteLine($"Event recorded for eternal goal: {_shortName}");
@@ -18,6 +22,22 @@ namespace EternalQuest
         public override string GetStringRepresentation()
         {
             return $"{base.GetStringRepresentation()} - Points: {_points}";
+        }
+
+        protected override string GetFriendlyCompleteActionDescription()
+        {
+            return "each time this habit is repeated";
+        }
+
+        protected override string GetFriendlyGoalTypeName()
+        {
+            return "eternal habit";
+        }
+
+        public override void Complete()
+        {
+            _isCompleted = false; 
+            _pointsEarned += _points;
         }
     }
 }
