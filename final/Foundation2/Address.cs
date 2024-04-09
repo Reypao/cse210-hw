@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+namespace ordering 
+{
 public class Address
 {
     private string streetAddress;
@@ -25,4 +27,5 @@ public class Address
     {
         return $"{streetAddress}, {city}, {stateProvince}, {country}";
     }
+}
 }
